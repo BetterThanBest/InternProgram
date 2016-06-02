@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script language="javascript"> 
+ //窗口表格增加一行
+  function addNewRow(){
+   var tabObj=document.getElementById("myTab");//获取添加数据的表格
+   var rowsNum = tabObj.rows.length;  //获取当前行数
+   var colsNum=tabObj.rows[rowsNum-1].cells.length;//获取行的列数
+   var myNewRow = tabObj.insertRow(rowsNum);//插入新行
+   var newTdObj1=myNewRow.insertCell(0);
+   newTdObj1.innerHTML="<input type='checkbox' name='select' id='select'"+rowsNum+" style='width:40px' align='center' />";
+   var newTdObj2=myNewRow.insertCell(1);
+   newTdObj2.innerHTML="<input type='text' name='id' id='id'"+rowsNum+" style='width:40px' value='"+rowsNum+"' align='center'/>";
+   var newTdObj3=myNewRow.insertCell(2);
+   newTdObj3.innerHTML="<input type='text' name='parameterName' id='paramName'"+rowsNum+" style='width:304px' align='center' />";
+   var newTdObj4=myNewRow.insertCell(3);
+   newTdObj4.innerHTML="<input type='text' name='type' id='type'"+rowsNum+" style='width:40px' align='center' />";
+   var newTdObj5=myNewRow.insertCell(4); 
+   newTdObj5.innerHTML="<input type='text' name='length' id='length'"+rowsNum+" style='width:50px' align='center'/>";
+   var newTdObj6=myNewRow.insertCell(5);
+   newTdObj6.innerHTML="<input type='checkbox' name='pk' id='pk'"+rowsNum+" style='width:50px' align='center'/>";
+   var newTdObj7=myNewRow.insertCell(6);
+   newTdObj7.innerHTML="<input type='checkbox' name='fk' id='fk'"+rowsNum+" style='width:50px' align='center'/>";
+ }
+//窗口表格删除一行
+  function removeRow(){
+   var chkObj=document.getElementsByName("select");
+   var tabObj=document.getElementById("myTab");
+   for(var k=0;k<chkObj.length;k++){
+    if(chkObj[k].checked){
+     tabObj.deleteRow(k+1);
+     k=-1;
+    }
+   }
+  }
+</script>
+</head>
+<body>
+<input type="button" name="addNewRow" onclick="addNewRow();" value="add" />
+<input type="button" name="removeRow" onclick="removeRow();" value="delete" />
+<hr>
+<form action="../controller/FormServlet" method="post">
+
+	<table width="600px" border="1" cellpadding="0" cellspacing="0" id="myTab">
+	        <tr>
+	        <td width="40px" class="top-bt liebiao-c" align="center" >select</td>
+	        <td width="40px" class="top-bt liebiao-c" align="center" >id</td>
+	        <td width="80px" class="top-bt liebiao-c" align="center">parameter name</td>
+	        <td width="40px" class="top-bt liebiao-c" align="center" >type</td>
+	        <td width="50px" class="top-bt liebiao-c" align="center" >length</td>
+	        <td width="40px" class="top-bt liebiao-c" align="center" >primary key</td>
+	       	<td width="40px" class="top-bt liebiao-c" align="center" >foreign key</td>
+	       </tr>
+	</table>
+	<hr/>
+	<input type="submit" name="submit" value ="submit">
+	<input type="reset" name = "reset" value ="reset">
+</form>
+</body>
+</html>
