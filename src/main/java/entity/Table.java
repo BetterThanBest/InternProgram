@@ -43,6 +43,8 @@ public class Table {
 	public void setForeignKey(String foreignKey) {
 		this.foreignKey = foreignKey;
 	}
+	public Table() {
+	}
 	
 	
 }
